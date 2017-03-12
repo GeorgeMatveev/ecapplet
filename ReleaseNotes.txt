@@ -1,0 +1,233 @@
+******************************************************
+	George Yury Matveev
+	Elliptic Curve Applet
+
+is a Java tool intended for those doing
+research in Elliptic Curve/Number Theory,
+as well as for all people who love Number Theory
+and Mathematics in general.
+
+You are welcome to get in touch regarding this project
+and/or ECC via email on my Resume page.
+
+******************************************************
+
+Version 6.5 (8 March 2017): implemented sorting functionality
+for thread safe CopyOnWriteArrayList container used by GYM algorithm.
+Fixed minor UI controls bugs. Added images.
+
+Version 6.4 (21 August 2016): code re-factoring, some bugs fixed
+
+Select A2 = 6/2, A4 = 10/2, A6 = 14/2,
+found 7 integer points, j invariant = 30.245
+Click points (-2, 1), (-1, 2) and (1, 4) on GridPanel, then Add button.
+Result: (-1, 2) + (-2, 1) + (1, 4) = (-4, -1)
+
+To confirm/verify this result use the same curve with Integer coefficients (3,5,7),
+click the same points and get the same Result.
+
+***
+
+Version 6.3 (12 August 2016): Elliptic curve accepts Rational coefficients
+
+Select A2 = 3/1, A4 = 5/1, A6 = 7/1,
+found 7 integer points, j invariant = 119.0
+Click points (-2, 1), (-1, 2) and (1, 4) on GridPanel, then Add button.
+Result: (-1, 2) + (-2, 1) + (1, 4) = (-4, -1)
+
+To confirm/verify this result use the same curve with Integer coefficients (3,5,7),
+click the same points and get the same Result.
+
+***
+
+Version 6.2 (05 August 2016): Bug fixing release
+
+***
+
+Version 6.1 (20 July 2016):
+
+Check box GYM (for George Yury Matveev algorithm) is added to UI
+instead of RatPoints button.
+
+CopyOnWriteArrayList thread safe container is used for both Integer and Rational points.
+Fixed minor bugs in initial implementation of Matveev algorithm.
+
+To stop running search click Draw button, select another curve/options, click Points button.
+
+********** ********** ********** ********** ********** **********
+
+Version 6.0 (15 March 2016) implemented GYM algorithm (for George Yury Matveev) for Rational points search  on triangulated Elliptic curve described in my articles
+
+1.Triangulation of Elliptic curve:
+www.matveev.se/math/tec.htm
+
+and
+
+2.Rational points on Elliptic curve via triangulation:
+www.matveev.se/math/rpec.htm
+
+Version 6.0 works correctly on those curves that allow for triangulation of the form: y^2 = x(x^2 + Ax + B), with A and B Rational numbers.
+
+For other types of curves this is still Work In Progress
+with much to be understood/done.
+
+UI of the applet adds new button "RatPoints" which triggers
+Matveev algorithm described in matveev-rpec.pdf above.
+
+Limits for Brahmagupta (k,l,m) and denominator d are fixed in the code
+and can not be changed via UI. WIP.
+
+********** ********** ********** ********** **********
+Version 5.0 (26 April 2015) made it possible to multiply points 
+and add several points selected via clicks on GridPanel and display Result Point.
+Results are displayed like this: m*(x, y)+ n*(x, y) + ... = (a, b)
+
+Updated ecapplet.htm with new examples:
+select curve y^2 = x^3 + 17, click points several times, click Add:
+
+(2,5)*4  = (-938/95, 980981/9025)
+(-2,3)*4 = (-174/19, -8693/361)
+(-2,3)*3 = (0,7)
+(-2,3)*5 = (0,7)
+(-2,3)*3 + (-1, 4)*3 + (2,5)*3  = (-2, 3)
+
+******************************************************
+Version 4.5 (28 March 2015) made it possible to add several
+points selected via clicks on GridPanel and display ResultPoint.
+Updated ecapplet.htm with new example:
+select curve y^2 = x^3 + 17, click points (-2, 3), (-1, 4) and (2, 5), click Add.
+
+Result: (-2, 3) + (-1, 4) + (2, 5) = (-2, -3)
+
+******************************************************
+Version 4.2.5 (15 March 2015) fixed minor bug related to
+debug flag in the code base.
+
+******************************************************
+Version 4.2 (11 March 2015) fixed minor bug related to
+display of negative y coordinates.
+Updated ecapplet.htm file with correct result:
+select curve y^2 = x^3 + 17, click point (4, 9) twice, then Add:
+
+(4, 9) + (4, 9) = (-16/3, -143/9)
+
+******************************************************
+Version 4.1 fixed minor bug related to addition of points.
+Updated ecapplet.htm file with correct result.
+select curve y^2 = x^3 + 17, click 2 points, then Add:
+
+(-2, 3) + (-1, 4) = (4, 9)
+
+******************************************************
+
+Version 4.0 (Saturday, February 21, 2015) introduced Rational
+points arithmetics on Elliptic Curve using Java BigInteger class
+for potentially unlimited size (numerator/denominator) of Rational coordinates.
+Major code rework/re-factoring. Work in Progress.
+
+---
+
+Example1: select curve y^2 = x^3 + 17.
+
+Click "Points", then click points (-1, 4) and (2, 5), then "Add" button.
+Result: (-1, 4) + (-2, 3) = (4, 9).
+
+Example2: select curve y2 = x^3 + 36*x^2 + 5*x + 34.
+
+Click "Points", then click points (51, 476) and (94, 1072), then "Add" button.
+
+Result: (51, 476) + (94, 1072) = (87111/1849, 33561284/79507). 
+
+******************************************************
+
+Version 3.1 (Sunday, July 20, 2014) fixed minor bug
+realated to integer points display on Grid panel,
+added more comments regarding code.
+Added running applet images to SF project site.
+Work in progress.
+
+******************************************************
+
+Saturday October 26, 2013:
+
+Project becomes Open Source Software with GPLv2.0 license.
+Source code is published on Source Forge site (git repo).
+GPLv2 License clause is added to source code.
+Software developers as well as NT researchers
+are very welcome to join :-)
+
+******************************************************
+
+Version 3.0 (19 Nov 2012) introduced modulo p math.
+New check box mod(p) when selected allows for selection
+of module among set of primes available in scroll box.
+Mod(p) points added to grid panel are automatically sorted.
+Total number of mod(p) points is displayed on canvas.
+
+******************************************************
+
+Version 2.0 (9 Jul 2012) added capability to ADD Integer
+points on elliptic curve according to group law.
+To that end html panel with points is replaced with
+Java grid panel and action listener.
+
+Click on the grid results in a point being added to
+the container of points to be used in addition.
+Results of selection and addition are printed on canvas.
+
+To double a point (P + P) one should selected it twice
+and then click "Add" button to get the result.
+Several points may be selected for addition. If sum
+of first two points is not an integer point operation
+will break with message printed on canvas.
+
+------
+
+Example1: select elliptic curve y^2 = x^3 + 5*x + 7.
+Click "Points" to see grid with points,
+click (2, 5) and (3, 7), then click "Add" button
+to see the result: (2, 5) + (3, 7) = (-1, 1).
+To clear/renew selection, redraw the curve.
+
+Example2: select elliptic curve y^2 = x^3 + 17.
+Click "Points" to see grid with 8 integer points,
+click (-2, 3) and (-1, 4), then click "Add" button
+to see the result: (-2, 3) + (-1, 4) = (4, 9)
+displayed on the drawing panel.
+
+Example3: select elliptic curve y^2 = x^3 + 17.
+Click "Points" to see grid with 8 integer points,
+click (4, 9) and (2, 5), then click "Add" button
+to see the result: (4, 9) + (2, 5) = (-2, 3)
+displayed on the drawing panel!
+
+******************************************************
+
+Version 1.1 (25 Feb 2012) added capability to do
+Triangulation of Elliptic Curve as described in my
+article: www.matveev.se/math/tec.htm
+
+Check box "Triangulation" turns it on, output includes
+integer points and corresponding (a*a, b*c) pairs of
+triangles which result in this point.
+
+Drawing is now done on JPanel (instead of awt.Canvas)
+using Graphics2D, which improves responsiveness of UI:
+curve is re-drawn automatically when coefficients change.
+
+******************************************************
+
+Version 1.0 (18 Feb 2012) is first publicly available version of the tool.
+It allows one to chose coefficients of Elliptic Curve given in generic form:
+
+ y^2 = x^3 + a2*x^2 + a4*x + a6
+
+Button "Draw" allows one to draw the curve on Java Canvas,
+display curve's discriminant and j-invariant.
+
+Button "Points" does deterministic search for small integer
+points (x < 50,000) and displays results in Points panel in HTML format.
+
+******************************************************
+Copyright 2012-2016, George Yury Matveev. All rights reserved.
+

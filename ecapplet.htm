@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>Elliptic Curve Applet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Elliptic Curve Applet, George Yury Matveev GYM algorithm, discriminant, j-invariant">
+<meta name="keywords" content="search/add/multiply Integer and Rational points on Elliptic Curve"> 
+<meta name="keywords" content="modulo prime points, mod(p), triangulation of Elliptic Curve">
+<meta name="keywords" content="Java, AWT, Swing">
+<meta name="description" content="Elliptic Curve Applet from George Yury Matveev.se">
+<meta name="archive" content="false">
+<meta name="archive" content="FALSE">
+<meta name="date" content="2017-03-08">
+
+<link type="text/css" rel="stylesheet" href="../../js/main.css"/>
+</head>
+
+<body id="page">
+<h2>Elliptic Curve Applet v6.5</h2>
+
+	<applet code="se.matveev.ec.ECApplet.class"
+		archive="ecapplet65_obf.jar" width=700 height=700>
+      alt="Your browser understands the &lt;APPLET&gt; tag but isn't running the applet.
+Check your browser Java settings."
+	<param name="fgColor" value="00ffff">
+	<param name="bgColor" value="00ff00">
+	<param name="txColor" value="000000">
+	<param name="cvColor" value="0000ff">
+	<param name="A2" value="36">
+	<param name="A4" value="5">
+	<param name="A6" value="34">
+    </applet>
+
+<p>Elliptic Curve Applet draws curve given in a generic form:
+<p>y<sup>2</sup> = x<sup>3</sup> + a<sub>2</sub>*x<sup>2</sup> + a<sub>4</sub>*x + a<sub>6</sub>
+<p>One can search for Integer and Rational (from v4.0) points on a curve, multiply (from v5.0) and add points, get discriminant and j-invariant.
+
+<p>Version 6.5 (9 March 2017): implements new sorting algorithm for CopyOnWriteArrayList thread safe container.
+<br>Some minor UI bugs fixed. Images of running applet added.
+
+<p>Images below will give you an idea how Elliptic Curve Applet works when run using <b>appletviewer</b> tool:
+
+<p>Add 3 points on Elliptic curve:
+
+<div>
+<table border="0" cellpadding="10" cellspacing="0" width="70%">
+<tr><td>
+<img src="images/ECA65Add3.png" width="700" height="700" border="0" alt="George Matveev">    
+</td></tr>
+</table>
+</div>
+
+<p>Multiply points:
+
+<div>
+<table border="0" cellpadding="10" cellspacing="0" width="70%">
+<tr><td>
+<img src="images/ECA65Mult.png" width="700" height="700" border="0" alt="George Matveev">    
+</td></tr>
+</table>
+</div>
+
+<p>Triangulate curve (see <a href=http://www.matveev.se/math/tec.htm>Triangulation of Elliptic</a> curve for details):
+
+<div>
+<table border="0" cellpadding="10" cellspacing="0" width="70%">
+<tr><td>
+<img src="images/ECA65Triang.png" width="700" height="700" border="0" alt="George Matveev">    
+</td></tr>
+</table>
+</div>
+
+<p>Using mod(p) arithmetics on the curve:
+
+<div>
+<table border="0" cellpadding="10" cellspacing="0" width="70%">
+<tr><td>
+<img src="images/ECA65Mod13.png" width="700" height="700" border="0" alt="George Matveev">    
+</td></tr>
+</table>
+</div>
+
+
+<p>Version 6.4 (21 August 2016): re-factored code, fixed minor bugs
+
+<p>Version 6.3 (12 August 2016): Elliptic curve now accepts Rational coefficients
+
+<p><i>Example</i>: select A2 = 3/1, A4 = 5/1, A6 = 7/1:
+found 7 integer points, j invariant = 30.245317
+<br>Click points (-2, 1), (-1, 2) and (1, 4) on GridPanel, then Add button.
+<br>Result: (-1, 2) + (-2, 1) + (1, 4) = (-4, -1)
+
+<p>To confirm/verify this result use the same curve with Integer coefficients (3,5,7),
+click the same points and get the same Result.
+
+
+<p>Version 6.1 (20 July 2016):
+
+<p>Check box GYM (for George Yury Matveev algorithm) is added to UI
+instead of RatPoints button.
+ 
+CopyOnWriteArrayList thread safe container is now used for both Integer and Rational points. Fixed minor bugs in initial implementation of Matveev GYM algorithm. 
+
+<p>Version 6.0 (15 March 2016) implements George Yury Matveev GYM algorithm for Rational points search described in my paper
+
+<p><a href="http://www.matveev.se/math/rpec.htm">Rational Points on Elliptic Curve via Triangulation</a>
+
+<p>At the moment the algorithm only works for Elliptic Curves that allow for triangulation
+of the form: y<sup>2</sup> = x(x<sup>2</sup> + Ax + B), where A and B are Rational numbers. 
+
+<p>Needless to say, this is Work in Progress like many other subjects related to Elliptic Curve/NT, but it looks rather interesting and promising somehow.
+
+<p>Any form of Financial support (grant, contract, scholarship, etc)
+will be much appreciated and may lead to a further progress in this research work.
+
+<p>Version 5.0 (26 April 2015) implemented <i>multiplication</i> and addition of <i>several</i> points selected via clicks on GridPanel:
+
+<p>To add two or more points select points by clicking on the grid panel then "Add" button.
+
+<p><i>Example</i>: select curve y<sup>2</sup> = x<sup>3</sup> + 17.
+
+<p>Click point (-2, 3) three times, then "Add" button.
+<p>Result: (-2, 3)*3 = (0, 7).
+<br>
+
+<p>Click point (-2, 3) four times, then "Add" button.
+<p>Result: (-2, 3)*4 = (-174/19, -8693/361).
+<br>
+
+<p>Click "Points", then click points (-2, 3), (-1, 4) and (2, 5) three times each, then "Add" button.
+<p>Result: (-2, 3)*3 + (-1, 4)*3 + (2, 5)*3 = (-2, 3).
+
+<p>Click "Points", then click points (-2, 3), (-1, 4) and (2, 5) two times each, then "Add" button.
+<p>Result: (-2, 3)*3 + (-1, 4)*3 + (2, 5)*3 = (-2231/576, 11609/13824).
+
+<br><br>
+<p>Version 4.0 implemented <i>Rational points</i> arithmetic on Elliptic Curves using Java BigInteger class with unlimited size of (numerator/denominator) of Rational points coordinates.
+
+<p><i>Example</i>: select curve y<sup>2</sup> = x<sup>3</sup> + 17.
+<p>Click "Points", then click point (4, 9) twice, then "Add" button.
+<p>Result: (4, 9) + (4, 9) = (-16/3, -143/9).
+<br>
+
+<p><i>Example</i>: select curve y<sup>2</sup> = x<sup>3</sup> + 17.
+<p>Click "Points", then click points (-1, 4) and (2, 5), then "Add" button.
+<p>Result: (-1, 4) + (2, 5) = (-8/9, 109/27).
+<br>
+
+<p><i>Example</i>: select curve y<sup>2</sup> = x<sup>3</sup> + 36*x<sup>2</sup> + 5*x + 34.
+<p>Click "Points", then click points (51, 476) and (94, 1072), then "Add" button.
+<p>Result: (51, 476) + (94, 1072) = (87111/1849, 33561284/79507).
+<br>
+
+<p><i>Example</i>: select curve y<sup>2</sup> = x<sup>3</sup> + 36*x<sup>2</sup> + 5*x + 34.
+<p>Click "Points", then click points (94, 1072) and (1115, 37828), then "Add" button.
+<p>Result: (94, 1072) + (1115, 37828)= (87, 820).
+<br>
+<br>
+<p>Applet also does Elliptic curve triangulation described in the article <a href=http://www.matveev.se/math/tec.htm>"Triangulation of Elliptic Curve"</a>.
+<br>
+
+
+<p>If your project needs help (e.g. with ECC/PKI algorithms), you are welcome to get in touch using contact email on <a href="http://matveev.se/george/resume.htm">my Resume page</a>.
+<br>
+<p>Also if you come across a bug or would like to provide comments/suggestions regarding this project, you are welcome to get in touch via email on Resume page or simply submit a bug on <a href="http://sourceforge.net/projects/ecapplet/">projects Source Forge page</a>
+
+<p><a href="ReleaseNotes.txt">Release Notes</a> provides more info and examples.
+</body>
+</html>
