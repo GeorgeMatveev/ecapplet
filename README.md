@@ -20,7 +20,7 @@ works in practice.
 Applet aslo implements beta version of GYM (George Yury Matveev) algorithm for finding Rational points
 on Trinagulated Elliptic curve. GYM algorithm is described in my paper "Rational points on Elliptic curve"
 
-wwww.matveev.se/math/rpec.htm
+http://matveev.se/math/rpec.htm
 
 This is currently (March 2017) work in progress.
 
